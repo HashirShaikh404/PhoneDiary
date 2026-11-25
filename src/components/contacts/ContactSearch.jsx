@@ -1,25 +1,26 @@
+import { Search, X } from 'lucide-react';
 import './ContactSearch.css';
 
-// search bar component for filtering contacts
 export default function ContactSearch({ searchTerm, onSearchChange }) {
   return (
     <div className="contact-search">
-      <span className="search-icon">🔍</span>
+      <Search size={18} className="search-icon" />
       <input
         type="text"
         className="search-input"
-        placeholder="Search by name, email, or phone..."
+        placeholder="Search diary by name, email, or phone..."
         value={searchTerm}
         onChange={(e) => onSearchChange(e.target.value)}
       />
-      {/* clear button only shows when typing */}
       {searchTerm && (
         <button
+          type="button"
           className="search-clear"
           onClick={() => onSearchChange('')}
           title="Clear search"
+          aria-label="Clear search"
         >
-          ✕
+          <X size={15} />
         </button>
       )}
     </div>

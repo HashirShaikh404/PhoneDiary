@@ -21,7 +21,7 @@ export function getContacts() {
 export function saveContacts(contacts) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts));
-  } catch (error) {
+  } catch {
     throw new Error('Failed to save contacts. Your browser storage may be full.');
   }
 }

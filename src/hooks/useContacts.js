@@ -1,17 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { getContacts, saveContacts, generateId } from '../services/contactService';
 
 // custom hook to manage all contacts state and actions
 export function useContacts() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(() => getContacts());
   const [searchTerm, setSearchTerm] = useState('');
   const [notification, setNotification] = useState(null);
-
-  // load saved contacts from local storage on page load
-  useEffect(() => {
-    const stored = getContacts();
-    setContacts(stored);
-  }, []);
 
   // show notification and hide it after 3 seconds
   function showNotification(message, type = 'success') {

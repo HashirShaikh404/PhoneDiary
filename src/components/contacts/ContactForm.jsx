@@ -1,5 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { validateContact, hasNoErrors } from '../../utils/validation';
+import {
+  X,
+  User,
+  Mail,
+  Phone,
+  MapPin,
+  Check,
+  AlertCircle,
+  NotebookPen,
+  BookUser,
+} from 'lucide-react';
 import './ContactForm.css';
 
 const EMPTY_FORM = {
@@ -10,25 +21,19 @@ const EMPTY_FORM = {
 };
 
 export default function ContactForm({ contactToEdit, onSubmit, onCancel }) {
-  const [formData, setFormData] = useState(EMPTY_FORM);
-  const [errors, setErrors] = useState({});
-
   const isEditing = contactToEdit !== null;
 
-  // fill form if we are editing an existing contact
-  useEffect(() => {
-    if (contactToEdit) {
-      setFormData({
+  const [formData, setFormData] = useState(() =>
+    contactToEdit
+      ? {
         name: contactToEdit.name,
         email: contactToEdit.email,
         phone: contactToEdit.phone,
         address: contactToEdit.address,
-      });
-    } else {
-      setFormData(EMPTY_FORM);
-    }
-    setErrors({});
-  }, [contactToEdit]);
+      }
+      : EMPTY_FORM
+  );
+  const [errors, setErrors] = useState({});
 
   // update state when inputs change and clear error for that field
   function handleChange(e) {
@@ -69,77 +74,139 @@ export default function ContactForm({ contactToEdit, onSubmit, onCancel }) {
 
   return (
     <div className="modal-overlay" onClick={onCancel}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
+      <div className="modal diary-modal" onClick={(e) => e.stopPropagation()}>
+        {/* Top decorative bookmark strip */}
+        <div className="modal-accent-bar" />
+
         <div className="modal-header">
-          <h2>{isEditing ? 'Edit Contact' : 'Add Contact'}</h2>
-          <button className="modal-close" onClick={onCancel} title="Close">
-            ✕
+          <div className="modal-title-group">
+            <div className="modal-title-icon">
+              {isEditing ? <NotebookPen size={20} /> : <BookUser size={20} />}
+            </div>
+            <div>
+              <h2 className="modal-title">
+                {isEditing ? 'Edit Diary Entry' : 'New Contact Entry'}
+              </h2>
+              <p className="modal-subtitle">
+                {isEditing
+                  ? 'Update contact details in your phone diary'
+                  : 'Add a new contact to your personal directory'}
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            className="modal-close"
+            onClick={onCancel}
+            title="Close dialog"
+            aria-label="Close dialog"
+          >
+            <X size={18} />
           </button>
         </div>
 
         <form className="contact-form" onSubmit={handleSubmit} noValidate>
+          {/* Full Name */}
           <div className="form-group">
-            <label htmlFor="name">Full Name</label>
+            <label htmlFor="name">
+              <User size={14} className="label-icon" />
+              <span>Full Name</span>
+            </label>
             <input
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="John Doe"
+              placeholder="e.g. Eleanor Vance"
               className={errors.name ? 'input-error' : ''}
+              autoFocus
             />
-            {errors.name && <span className="error-message">{errors.name}</span>}
+            {errors.name && (
+              <span className="error-message">
+                <AlertCircle size={13} />
+                <span>{errors.name}</span>
+              </span>
+            )}
           </div>
 
+          {/* Email Address */}
           <div className="form-group">
-            <label htmlFor="email">Email Address</label>
+            <label htmlFor="email">
+              <Mail size={14} className="label-icon" />
+              <span>Email Address</span>
+            </label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="john@example.com"
+              placeholder="e.g. eleanor@example.com"
               className={errors.email ? 'input-error' : ''}
             />
-            {errors.email && <span className="error-message">{errors.email}</span>}
+            {errors.email && (
+              <span className="error-message">
+                <AlertCircle size={13} />
+                <span>{errors.email}</span>
+              </span>
+            )}
           </div>
 
+          {/* Phone Number */}
           <div className="form-group">
-            <label htmlFor="phone">Phone Number</label>
+            <label htmlFor="phone">
+              <Phone size={14} className="label-icon" />
+              <span>Phone Number</span>
+            </label>
             <input
               type="tel"
               id="phone"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              placeholder="+1 (555) 123-4567"
+              placeholder="e.g. +1 (555) 234-5678"
               className={errors.phone ? 'input-error' : ''}
             />
-            {errors.phone && <span className="error-message">{errors.phone}</span>}
+            {errors.phone && (
+              <span className="error-message">
+                <AlertCircle size={13} />
+                <span>{errors.phone}</span>
+              </span>
+            )}
           </div>
 
+          {/* Postal / Physical Address */}
           <div className="form-group">
-            <label htmlFor="address">Address</label>
+            <label htmlFor="address">
+              <MapPin size={14} className="label-icon" />
+              <span>Address</span>
+            </label>
             <input
               type="text"
               id="address"
               name="address"
               value={formData.address}
               onChange={handleChange}
-              placeholder="123 Main St, City, Country"
+              placeholder="e.g. 742 Evergreen Terrace, Springfield"
               className={errors.address ? 'input-error' : ''}
             />
-            {errors.address && <span className="error-message">{errors.address}</span>}
+            {errors.address && (
+              <span className="error-message">
+                <AlertCircle size={13} />
+                <span>{errors.address}</span>
+              </span>
+            )}
           </div>
 
           <div className="form-actions">
             <button type="button" className="btn-cancel" onClick={onCancel}>
-              Cancel
+              <X size={15} />
+              <span>Cancel</span>
             </button>
             <button type="submit" className="btn-submit">
-              {isEditing ? 'Save Changes' : 'Add Contact'}
+              <Check size={16} />
+              <span>{isEditing ? 'Save Changes' : 'Add to Diary'}</span>
             </button>
           </div>
         </form>

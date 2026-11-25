@@ -1,18 +1,21 @@
 .contact-card {
+  position: relative;
   background: #ffffff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e5e7eb;
-  transition: box-shadow 0.2s, transform 0.15s;
+  border-radius: var(--radius-md);
+  padding: 22px 20px 18px;
+  border: 1px solid var(--border-card);
+  box-shadow: 0 4px 16px -2px rgba(95, 70, 45, 0.06), 0 1px 3px rgba(95, 70, 45, 0.04);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow: hidden;
 }
 
 .contact-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -4px rgba(95, 70, 45, 0.12), 0 4px 10px rgba(95, 70, 45, 0.05);
+  border-color: #dfd4c4;
 }
 
 .card-header {
@@ -22,92 +25,207 @@
 }
 
 .card-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #6366f1, #818cf8);
-  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.05rem;
   flex-shrink: 0;
   letter-spacing: 0.5px;
 }
 
 .card-identity {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .card-name {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #1f2937;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text-main);
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+
+.card-entry-tag {
+  font-size: 0.7rem;
+  color: #9c8a77;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .card-details {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+  background: #fdfcf9;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #f3ece1;
 }
 
 .card-field {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 0.9rem;
-  color: #4b5563;
+  font-size: 0.88rem;
 }
 
-.field-icon {
-  font-size: 0.85rem;
+.field-icon-box {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   margin-top: 1px;
 }
 
+.field-icon-mail {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.field-icon-phone {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.field-icon-address {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.field-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.field-label {
+  font-size: 0.68rem;
+  color: #a39585;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
 .field-value {
+  color: #3f3933;
+  font-weight: 500;
   word-break: break-word;
 }
 
-.card-actions {
+.field-link {
+  color: #3f3933;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.field-link:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* Quick action pills */
+.card-quick-actions {
   display: flex;
   gap: 8px;
-  padding-top: 4px;
-  border-top: 1px solid #f3f4f6;
+  flex-wrap: wrap;
+}
+
+.quick-action-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.pill-call {
+  background: #e6f9f0;
+  color: #047857;
+  border: 1px solid #bbf7d0;
+}
+
+.pill-call:hover {
+  background: #059669;
+  color: #ffffff;
+  border-color: #059669;
+}
+
+.pill-email {
+  background: #eef2ff;
+  color: #4338ca;
+  border: 1px solid #c7d2fe;
+}
+
+.pill-email:hover {
+  background: #4f46e5;
+  color: #ffffff;
+  border-color: #4f46e5;
+}
+
+/* Card bottom controls */
+.card-actions {
+  display: flex;
+  gap: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed #e8decb;
   margin-top: auto;
 }
 
-.btn-edit,
-.btn-delete {
+.btn-card-action {
   flex: 1;
-  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-pill);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.18s ease;
 }
 
 .btn-edit {
-  background-color: #eef2ff;
-  color: #4338ca;
+  background-color: #f7f3ec;
+  color: #63503f;
+  border: 1px solid #e7ded2;
 }
 
 .btn-edit:hover {
-  background-color: #e0e7ff;
+  background-color: #eee3d3;
+  color: #2b1f1d;
 }
 
 .btn-delete {
-  background-color: #fef2f2;
-  color: #dc2626;
+  background-color: #fff1f2;
+  color: #e11d48;
+  border: 1px solid #fecdd3;
 }
 
 .btn-delete:hover {
-  background-color: #fee2e2;
+  background-color: #ffe4e6;
+  color: #be123c;
 }

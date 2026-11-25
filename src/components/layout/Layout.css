@@ -2,19 +2,122 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f0f2f5;
 }
 
 .main-content {
   flex: 1;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 32px 24px;
+  padding: 36px 24px 48px;
+}
+
+/* ---- Diary Binder Container ---- */
+.diary-binder {
+  position: relative;
+  background: var(--diary-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-diary);
+  display: flex;
+  overflow: hidden;
+}
+
+/* Vintage spiral / ring-bound spine on left */
+.binder-spine {
+  width: 38px;
+  background: linear-gradient(90deg, #ede3d2 0%, #e2d5c0 50%, #f4ece0 100%);
+  border-right: 2px dashed #cfbeaa;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 40px 0;
+  flex-shrink: 0;
+}
+
+.binder-ring {
+  width: 22px;
+  height: 12px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #fef3c7 0%, #d97706 60%, #92400e 100%);
+  box-shadow: 0 2px 4px rgba(78, 48, 24, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  border: 1px solid #b45309;
+}
+
+/* The actual paper page inside the diary */
+.diary-sheet {
+  flex: 1;
+  min-width: 0;
+  padding: 32px 36px 44px;
+  background: #ffffff;
+  background-image:
+    linear-gradient(to right, rgba(230, 220, 205, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(230, 220, 205, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+  position: relative;
+}
+
+/* Sliding back-and-forth glow along top edge */
+.diary-sheet::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #ede6da;
+  z-index: 2;
+}
+
+.diary-sheet::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 90, 68, 0.4) 25%,
+    #c85a44 50%,
+    rgba(200, 90, 68, 0.4) 75%,
+    transparent 100%
+  );
+  box-shadow: 0 0 12px 1px rgba(200, 90, 68, 0.7), 0 0 4px #c85a44;
+  animation: slidingGlowLoop 2.6s ease-in-out infinite alternate;
+  z-index: 3;
+}
+
+@keyframes slidingGlowLoop {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: calc(100% - 140px);
+  }
+}
+
+/* Footer note */
+.diary-footer {
+  text-align: center;
+  padding: 16px 24px 28px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
 }
 
 @media (max-width: 768px) {
   .main-content {
-    padding: 20px 16px;
+    padding: 16px 12px 32px;
+  }
+
+  .binder-spine {
+    display: none;
+  }
+
+  .diary-sheet {
+    padding: 20px 16px 28px;
   }
 }

@@ -1,37 +1,108 @@
-.contact-list-empty {
-  text-align: center;
-  padding: 60px 24px;
-  color: #6b7280;
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.empty-icon {
-  font-size: 3rem;
-  display: block;
-  margin-bottom: 16px;
-}
-
-.contact-list-empty h3 {
-  font-size: 1.15rem;
-  color: #374151;
-  margin: 0 0 8px;
-}
-
-.contact-list-empty p {
-  font-size: 0.95rem;
-  margin: 0;
-  color: #6b7280;
+.contact-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .contact-count {
-  font-size: 0.85rem;
-  color: #6b7280;
-  margin: 0 0 16px;
+  font-size: 0.88rem;
+  color: #786b5e;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  background: #f4ede3;
+  color: #7c4a1e;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid #ebdccb;
 }
 
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 16px;
+  gap: 20px;
+}
+
+/* Empty state presentation */
+.contact-list-empty {
+  text-align: center;
+  padding: 64px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: #fdfbf7;
+  border-radius: var(--radius-lg);
+  border: 2px dashed #e6ded2;
+  margin: 16px 0;
+}
+
+.empty-icon-bubble {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #fff4ed;
+  border: 1px solid #fed7aa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f97316;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.12);
+  margin-bottom: 4px;
+}
+
+.empty-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.empty-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  max-width: 380px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.btn-reset-filter {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #ffffff;
+  color: var(--primary);
+  border: 1.5px solid var(--primary-soft);
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-reset-filter:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
 }
 
 @media (max-width: 480px) {
