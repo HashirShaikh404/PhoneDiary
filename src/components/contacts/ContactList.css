@@ -1,0 +1,41 @@
+.contact-list-empty {
+  text-align: center;
+  padding: 60px 24px;
+  color: #6b7280;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.contact-list-empty h3 {
+  font-size: 1.15rem;
+  color: #374151;
+  margin: 0 0 8px;
+}
+
+.contact-list-empty p {
+  font-size: 0.95rem;
+  margin: 0;
+  color: #6b7280;
+}
+
+.contact-count {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0 0 16px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 480px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}

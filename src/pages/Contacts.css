@@ -1,0 +1,85 @@
+.contacts-page {
+  position: relative;
+}
+
+/* ---- Toolbar ---- */
+.contacts-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.btn-add {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background-color: #6366f1;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.btn-add span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.btn-add:hover {
+  background-color: #4f46e5;
+}
+
+/* ---- Notification toast ---- */
+.notification {
+  position: fixed;
+  top: 76px;
+  right: 24px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  z-index: 400;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  animation: slideInRight 0.25s ease;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(40px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+.notification-success {
+  background-color: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.notification-error {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+@media (max-width: 600px) {
+  .contacts-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-add {
+    justify-content: center;
+  }
+
+  .notification {
+    left: 16px;
+    right: 16px;
+  }
+}
