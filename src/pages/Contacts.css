@@ -90,11 +90,11 @@
   align-items: center;
   gap: 8px;
   font-size: 0.85rem;
-  color: #715b49;
-  background: #fdf6ec;
+  color: var(--text-muted);
+  background: var(--diary-paper-warm);
   padding: 8px 16px;
   border-radius: var(--radius-pill);
-  border: 1px solid #fae6cf;
+  border: 1px solid var(--diary-paper-border);
 }
 
 .stats-sparkle {
@@ -108,9 +108,9 @@
   gap: 10px;
   margin-bottom: 24px;
   padding: 8px 12px;
-  background: #fbf8f2;
+  background: var(--diary-paper-warm);
   border-radius: var(--radius-md);
-  border: 1px solid #eee5d7;
+  border: 1px solid var(--diary-paper-border);
 }
 
 .alphabet-label {
@@ -118,7 +118,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #9c8a77;
+  color: var(--text-muted);
   padding-left: 4px;
   flex-shrink: 0;
 }
@@ -140,7 +140,7 @@
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
   background: transparent;
-  color: #6d5d4d;
+  color: var(--text-muted);
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
@@ -152,7 +152,7 @@
 }
 
 .alphabet-tab:hover {
-  background: #ede3d3;
+  background: var(--diary-paper-border);
   color: var(--text-main);
 }
 

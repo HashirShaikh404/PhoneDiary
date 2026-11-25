@@ -24,7 +24,7 @@
 
 .modal.diary-modal {
   position: relative;
-  background: #ffffff;
+  background: var(--modal-bg, #ffffff);
   border-radius: var(--radius-lg);
   width: 100%;
   max-width: 500px;
@@ -94,9 +94,9 @@
 }
 
 .modal-close {
-  background: #f7f3ed;
+  background: var(--diary-paper-warm);
   border: none;
-  color: #7d6e60;
+  color: var(--text-muted);
   cursor: pointer;
   width: 32px;
   height: 32px;
@@ -119,7 +119,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background: #fffdfa;
+  background: var(--modal-bg, #ffffff);
 }
 
 .form-group {
@@ -134,27 +134,27 @@
   gap: 6px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #4b4138;
+  color: var(--text-main);
 }
 
 .label-icon {
-  color: #9c8a77;
+  color: var(--text-muted);
 }
 
 .form-group input {
   padding: 11px 14px;
-  border: 1.5px solid #e7ded2;
+  border: 1.5px solid var(--diary-paper-border-strong);
   border-radius: var(--radius-sm);
   font-size: 0.94rem;
   color: var(--text-main);
-  background: #ffffff;
+  background: var(--input-bg, #ffffff);
   transition: all 0.2s ease;
 }
 
 .form-group input:focus {
   outline: none;
   border-color: var(--primary);
-  background: #fffdfd;
+  background: var(--input-bg, #ffffff);
   box-shadow: 0 0 0 3px var(--primary-glow);
 }
 

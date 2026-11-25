@@ -16,10 +16,10 @@
 .search-input {
   width: 100%;
   padding: 12px 42px 12px 46px;
-  border: 1.5px solid #e7ded2;
+  border: 1.5px solid var(--diary-paper-border-strong);
   border-radius: var(--radius-pill);
   font-size: 0.95rem;
-  background: #ffffff;
+  background: var(--input-bg, #ffffff);
   color: var(--text-main);
   box-shadow: 0 2px 6px rgba(100, 70, 40, 0.04);
   transition: all 0.2s ease;
@@ -28,8 +28,8 @@
 .search-input:focus {
   outline: none;
   border-color: var(--primary);
-  background: #fffdfd;
-  box-shadow: 0 0 0 3px var(--primary-glow), 0 2px 8px rgba(244, 63, 94, 0.08);
+  background: var(--input-bg, #ffffff);
+  box-shadow: 0 0 0 3px var(--primary-glow);
 }
 
 .search-input::placeholder {
