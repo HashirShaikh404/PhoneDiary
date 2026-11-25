@@ -21,12 +21,16 @@ export default function Navbar() {
         <div className="navbar-actions">
           <button
             type="button"
-            className="theme-toggle-btn"
+            className={`theme-slider${isDark ? ' theme-slider--dark' : ''}`}
             onClick={toggleTheme}
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
           >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            <span className="theme-slider__track">
+              <Sun size={14} className="theme-slider__icon theme-slider__icon--sun" />
+              <Moon size={14} className="theme-slider__icon theme-slider__icon--moon" />
+              <span className="theme-slider__thumb" />
+            </span>
           </button>
         </div>
       </div>
